@@ -1,18 +1,18 @@
 /*global define */
-define(["jquery"], function ($) {
+define(['jquery'], function ($) {
     'use strict';
 
     $.updateEmbeds = function() {
 
         var username = window.location.hash.substring(1);
 
-        if (username != "") {
-            $(".nohash").hide();
-            var irc = "<iframe src=\"https://kiwiirc.com/client/irc.speedrunslive.com/#" + username + "\"></iframe>";
+        if (username !== '') {
+            $('.nohash').hide();
+            var irc = '<iframe src="https://kiwiirc.com/client/irc.speedrunslive.com/#' + username + '"></iframe>';
 
             console.log();
 
-            $(".irc")
+            $('.irc')
                 .empty()
                 .append(irc);
 
@@ -25,11 +25,11 @@ define(["jquery"], function ($) {
             twitch += '<param name="flashvars" value="hostname=www.twitch.tv&amp;channel='+username+'&amp;auto_play=true">';
             twitch += '</object>';
 
-            $(".twitchplayer")
+            $('.twitchplayer')
                 .empty()
                 .append(twitch);
         } else {
-            $(".nohash").show();
+            $('.nohash').show();
         }
     };
 
@@ -37,13 +37,13 @@ define(["jquery"], function ($) {
         $.updateEmbeds();
     });
 
-    $("#gobutton").bind('click', function() {
-        location.hash = $("#username").val();
+    $('#gobutton').bind('click', function() {
+        location.hash = $('#username').val();
     });
 
-    $("#username").keyup(function(event){
-        if(event.keyCode == 13){
-            $("#gobutton").click();
+    $('#username').keyup(function(event){
+        if(event.keyCode === 13){
+            $('#gobutton').click();
         }
     });
 
