@@ -42,7 +42,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 15;
+    z-index: 2;
 
     .header {
         h3 {
@@ -101,6 +101,7 @@ a:hover {
     bottom: 0;
     position: absolute;
     width: 340px;
+    z-index: 3;
     iframe {
         height: 100%;
         width: 340px;
