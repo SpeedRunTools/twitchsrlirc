@@ -58,15 +58,6 @@ module.exports = function (grunt) {
                     ]
                 }
             },
-            test: {
-                options: {
-                    base: [
-                        '.tmp',
-                        'test',
-                        yeomanConfig.app,
-                    ]
-                }
-            },
             dist: {
                 options: {
                     open: true,
@@ -94,8 +85,7 @@ module.exports = function (grunt) {
             all: [
                 'Gruntfile.js',
                 '<%= yeoman.app %>/scripts/{,*/}*.js',
-                '!<%= yeoman.app %>/scripts/vendor/*',
-                'test/spec/{,*/}*.js'
+                '!<%= yeoman.app %>/scripts/vendor/*'
             ]
         },
         compass: {
@@ -280,9 +270,6 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 'compass',
-                'copy:styles'
-            ],
-            test: [
                 'copy:styles'
             ],
             dist: [
