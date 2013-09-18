@@ -21,6 +21,10 @@ devoted to making cool tools for the Speedrunning Community. Come check us out.
 ## TODO / Future
 - I'd like to make it so you can easily toggle between TwitchTV chat and IRC.
 - Error handling when you don't provide a username in the hash
+- Json decode http://twitchstatus.com/api/status?type=chat to determine if Twitch servers are usable or not.
+
+## Shoutouts
+- [Jack268](https://github.com/Jack268) for creating the rough draft of this.
 
 ## License
 Copyright (c) 2013 Zak Kristjanson
