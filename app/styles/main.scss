@@ -96,7 +96,7 @@ a:hover {
 }
 
 
-.chat {
+.chatcontainer {
     .top {
         position: absolute;
         top: 0;
@@ -184,15 +184,25 @@ a:hover {
     position: absolute;
     width: 340px;
     z-index: 3;
-    iframe {
-        height: 100%;
-        width: 340px;
-        border: 0;
+
+    .chat {
+        position: absolute;
+        top: 51px;
+        bottom: 0px;
+        width: 100%;
+        background-color: inherit;
+
+        iframe {
+            height: 100%;
+            width: 340px;
+            border: 0;
+        }        
     }
+
     background-color: #d9d9d9;
 }
 
-.chat:before {
+.chatcontainer:before {
     content: "";
     display: block;
     position: absolute;
