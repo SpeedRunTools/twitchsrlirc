@@ -3,14 +3,14 @@ This is a project to add a Speedrunslive IRC webchat to a Twitch embed.
 The original project idea was laid out on [Nmaster64's Twitter](https://twitter.com/Nmaster64/status/379347530716549120).
 
 ## Usage
-If you navigate to ''index.html#ubercow'' it will load the embed for ubercow's
-twitch and an embeded IRC client that defaults to ''#ubercow'' on irc.speedrunslive.com.
+If you navigate to `index.html#ubercow` it will load the embed for ubercow's
+twitch and an embeded IRC client that defaults to `#ubercow` on irc.speedrunslive.com.
 
 ## Development and Hosting
 This project uses Bower and Grunt to manage dependencies and help with code. These
 are both NodeJS projects and can be installed through npm.
 
-Run ''grunt'' to compile it and ''grunt server'' to run the development server.
+Run `grunt` to compile it and `grunt server` to run the development server.
 Once it's compiled, you can host it as a static site on any web server.
 
 
