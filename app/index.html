@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>srlchat</title>
+        <title>Twitch / Speedrunslive IRC</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -23,15 +23,20 @@
         <![endif]-->
         <header>
             <div class="header">
-                <h3>Speedrunslive Twitch / IRC</h3>
+                <h3>Twitch / Speedrunslive IRC</h3>
             </div>
         </header>
 
         <section role="main">
             <div class="objectcontainer">
                 <div class="twitchplayer">
-                    Loading...
                 </div>
+            </div>
+            <div class="nohash">
+                    <h1>No Twitch Specified</h1>
+                    <p>You didn't specify a Twitch TV username</p>
+                    <input type="text" placeholder="Username" id="username"></input>
+                    <button type="button" id="gobutton">Go!</button>
             </div>
             <div class="blurb">
                 <hr />
@@ -40,7 +45,6 @@
         </section>
 
         <div class="irc">
-            Loading...
         </div>
 
         <!-- build:js scripts/vendor.js -->
