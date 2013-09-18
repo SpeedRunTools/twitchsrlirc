@@ -38,22 +38,22 @@ define(['jquery'], function ($) {
     };
 
     $.updateVisibility = function() {
-        $(".chat").hide();
+        $('.chat').hide();
         console.log(activeTab);
-        $("#" + activeTab).show();
-    }
+        $('#' + activeTab).show();
+    };
 
     $(window).bind('hashchange', function() {
         $.updateEmbeds();
     });
 
-    $("#chatpicker li a").bind('click', function() {
+    $('#chatpicker li a').bind('click', function() {
         var clicked = $(this);
 
-        $("#chatpicker li a").removeClass("selected");
-        clicked.addClass("selected");
+        $('#chatpicker li a').removeClass('selected');
+        clicked.addClass('selected');
 
-        activeTab = clicked.attr("target");
+        activeTab = clicked.attr('target');
 
         $.updateVisibility();
 
