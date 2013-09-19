@@ -1,7 +1,6 @@
 // Generated on 2013-09-17 using generator-webapp 0.4.2
 'use strict';
 
-var modRewrite = require('connect-modrewrite');
 var fs = require('fs');
 var path = require('path');
 
@@ -56,7 +55,7 @@ module.exports = function (grunt) {
                     var middlewares = [];
                     var directory = options.directory || options.base[options.base.length - 1];
                     if (!Array.isArray(options.base)) {
-                      options.base = [options.base];
+                        options.base = [options.base];
                     }
 
                     var checkFile = function(file) {
@@ -74,14 +73,14 @@ module.exports = function (grunt) {
                         if (checkFile(req.url)) {
                             next();
                         } else {
-                            req.url = "/index.html"
+                            req.url = '/index.html';
                             next();
                         }
                     });
 
                     options.base.forEach(function(base) {
-                      // Serve static files.
-                      middlewares.push(connect.static(base));
+                        // Serve static files.
+                        middlewares.push(connect.static(base));
                     });
 
                     // Make directory browse-able.
