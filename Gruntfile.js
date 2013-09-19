@@ -1,6 +1,10 @@
 // Generated on 2013-09-17 using generator-webapp 0.4.2
 'use strict';
 
+var modRewrite = require('connect-modrewrite');
+var fs = require('fs');
+var path = require('path');
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -47,7 +51,43 @@ module.exports = function (grunt) {
                 port: 9000,
                 livereload: 35729,
                 // change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
+                hostname: 'localhost',
+                middleware: function(connect, options) {
+                    var middlewares = [];
+                    var directory = options.directory || options.base[options.base.length - 1];
+                    if (!Array.isArray(options.base)) {
+                      options.base = [options.base];
+                    }
+
+                    var checkFile = function(file) {
+                        var result = false;
+                        options.base.forEach(function(base) {
+                            if (fs.existsSync(base + path.resolve(base, file))) {
+                                result = true;
+                            }
+                        });
+
+                        return result;
+                    };
+
+                    middlewares.push(function(req, res, next) {
+                        if (checkFile(req.url)) {
+                            next();
+                        } else {
+                            req.url = "/index.html"
+                            next();
+                        }
+                    });
+
+                    options.base.forEach(function(base) {
+                      // Serve static files.
+                      middlewares.push(connect.static(base));
+                    });
+
+                    // Make directory browse-able.
+                    middlewares.push(connect.directory(directory));
+                    return middlewares;
+                }
             },
             livereload: {
                 options: {
