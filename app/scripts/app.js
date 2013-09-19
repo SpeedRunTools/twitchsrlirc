@@ -1,7 +1,7 @@
 /*global define */
-define(['jquery', 'purl'], function ($, purl) {
+define(['jquery'], function ($) {
     'use strict';
-    
+
     var activeTab = 'twitchchat';
 
     $.updateEmbeds = function() {
