@@ -1,6 +1,7 @@
 require.config({
     paths: {
         jquery: '../bower_components/jquery/jquery',
+        davis: '../bower_components/davis/davis',
         bootstrapAffix: '../bower_components/sass-bootstrap/js/affix',
         bootstrapAlert: '../bower_components/sass-bootstrap/js/alert',
         bootstrapButton: '../bower_components/sass-bootstrap/js/button',
@@ -50,9 +51,10 @@ require.config({
     }
 });
 
-require(['app', 'jquery'], function (app, $) {
+require(['app', 'jquery', 'router'], function (app, $, router) {
     'use strict';
-    // use app here
-    console.log(app);
+    $(function() {
+        router.start();
+    });
     console.log('Running jQuery %s', $().jquery);
 });

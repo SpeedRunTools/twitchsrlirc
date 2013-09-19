@@ -1,12 +1,11 @@
-/*global define */
+/*global define, Davis */
 define(['jquery'], function ($) {
     'use strict';
 
-    var activeTab = 'twitchchat';
+    var app = {};
+    app.activeTab = 'twitchchat';
 
-    $.updateEmbeds = function() {
-        var username = window.location.hash.substring(1);
-
+    app.updateEmbeds = function(username) {
         if (username !== '') {
             $('.nohash').hide();
 
@@ -33,44 +32,44 @@ define(['jquery'], function ($) {
                 .empty()
                 .append(twitch);
         } else {
+            $('#ircchat').empty();
+            $('#twitchchat').empty();
+            $('.twitchplayer').empty();
             $('.nohash').show();
         }
     };
 
-    $.updateVisibility = function() {
+    app.updateVisibility = function() {
         $('.chat').hide();
-        console.log(activeTab);
-        $('#' + activeTab).show();
+        $('#' + app.activeTab).show();
     };
 
-    $(window).bind('hashchange', function() {
-        $.updateEmbeds();
-    });
+    app.setup = function() {
 
-    $('#chatpicker li a').bind('click', function() {
-        var clicked = $(this);
+        $('#chatpicker li a').bind('click', function() {
+            var clicked = $(this);
 
-        $('#chatpicker li a').removeClass('selected');
-        clicked.addClass('selected');
+            $('#chatpicker li a').removeClass('selected');
+            clicked.addClass('selected');
 
-        activeTab = clicked.attr('target');
+            app.activeTab = clicked.attr('target');
 
-        $.updateVisibility();
+            app.updateVisibility();
 
-    });
+        });
 
-    $('#gobutton').bind('click', function() {
-        location.hash = $('#username').val();
-    });
+        $('#gobutton').bind('click', function() {
+            // TODO: Update route
+            Davis.location.assign(new Davis.Request('/' + $('#username').val()));
+            //console.log(Davis());
+        });
 
-    $('#username').keyup(function(event){
-        if(event.keyCode === 13){
-            $('#gobutton').click();
-        }
-    });
+        $('#username').keyup(function(event){
+            if(event.keyCode === 13){
+                $('#gobutton').click();
+            }
+        });
+    };
 
-    $(function() {
-        $.updateEmbeds();
-    });
-
+    return app;
 });
