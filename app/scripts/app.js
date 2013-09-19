@@ -2,20 +2,24 @@
 define(['jquery'], function ($) {
     'use strict';
 
-    $.updateEmbeds = function() {
+    var activeTab = 'twitchchat';
 
+    $.updateEmbeds = function() {
         var username = window.location.hash.substring(1);
 
         if (username !== '') {
             $('.nohash').hide();
-            var irc = '<iframe src="https://kiwiirc.com/client/irc.speedrunslive.com/#' + username + '"></iframe>';
 
-            console.log();
+            var twitchchat = '<iframe scrolling="no" src="http://twitch.tv/chat/embed?channel=' + username + '&popout_chat=true"></iframe>';
+            var ircchat = '<iframe src="https://kiwiirc.com/client/irc.speedrunslive.com/#' + username + '"></iframe>';
 
-            $('.irc')
+            $('#ircchat')
                 .empty()
-                .append(irc);
+                .append(ircchat);
 
+            $('#twitchchat')
+                .empty()
+                .append(twitchchat);
 
             var twitch = '<object type="application/x-shockwave-flash" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=' + username + '" bgcolor="#000000">';
             twitch += '<param name="allowFullScreen" value="true">';
@@ -33,8 +37,26 @@ define(['jquery'], function ($) {
         }
     };
 
+    $.updateVisibility = function() {
+        $('.chat').hide();
+        console.log(activeTab);
+        $('#' + activeTab).show();
+    };
+
     $(window).bind('hashchange', function() {
         $.updateEmbeds();
+    });
+
+    $('#chatpicker li a').bind('click', function() {
+        var clicked = $(this);
+
+        $('#chatpicker li a').removeClass('selected');
+        clicked.addClass('selected');
+
+        activeTab = clicked.attr('target');
+
+        $.updateVisibility();
+
     });
 
     $('#gobutton').bind('click', function() {
