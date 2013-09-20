@@ -6,13 +6,16 @@ The original project idea was laid out on [Nmaster64's Twitter](https://twitter.
 If you navigate to `index.html#ubercow` it will load the embed for ubercow's
 twitch and an embeded IRC client that defaults to `#ubercow` on irc.speedrunslive.com.
 
-## Development and Hosting
-This project uses Bower and Grunt to manage dependencies and help with code. These
-are both NodeJS projects and can be installed through npm.
+## Installation Guide
+This project uses Node, Ruby, Bower and Grunt to help build and compile assets into a static site. This makes it easier for me to manage the codebase while still making a clean optimized website. 
 
-Run `grunt` to compile it and `grunt server` to run the development server.
-Once it's compiled, you can host it as a static site on any web server.
+To install the website you need Node.JS, npm, Ruby, and the Compass Rubygem. I am using Node v0.10.18 and Ruby 1.9.3p392 at the time of writing. After you clone the repository, run `npm install` to make sure the node dependencies are up to date.
 
+Next you need to setup bower, which I use to pull in jQuery and other helpful JS frameworks. If you haven't used bower before, you have to install it via npm with `npm install -g bower`. Then run `bower` in the root of the repository to download the dependencies.
+
+Finally it's time to build the site into static files. Simply run `grunt` in the root of the repository to compile everything. The static site will be put into the `dist` directory.
+
+You can also run `grunt server` to run the development server.
 
 ## SpeedRunTools
 This is a [SpeedRunTools](http://www.speedruntools.com) project. An open source community
