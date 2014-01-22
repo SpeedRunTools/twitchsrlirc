@@ -6,6 +6,8 @@ The original project idea was laid out on [Nmaster64's Twitter](https://twitter.
 If you navigate to `index.html#ubercow` it will load the embed for ubercow's
 twitch and an embeded IRC client that defaults to `#ubercow` on irc.speedrunslive.com.
 
+Now you can also specify a separate twitch chat and IRC channel!
+
 ## Installation Guide
 This project uses Node, Ruby, Bower and Grunt to help build and compile assets into a static site. This makes it easier for me to manage the codebase while still making a clean optimized website. 
 
@@ -22,7 +24,6 @@ This is a [SpeedRunTools](http://www.speedruntools.com) project. An open source 
 devoted to making cool tools for the Speedrunning Community. Come check us out.
 
 ## TODO / Future
-- I'd like to make it so you can easily toggle between TwitchTV chat and IRC.
 - Json decode http://twitchstatus.com/api/status?type=chat to determine if Twitch servers are usable or not.
 
 ## Shoutouts
