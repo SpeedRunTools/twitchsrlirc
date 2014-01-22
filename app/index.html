@@ -35,12 +35,14 @@
             <div class="nohash">
                     <h1>No Twitch Specified</h1>
                     <p>You didn't specify a Twitch TV username</p>
-                    <input type="text" placeholder="Username" id="username"></input>
+                    Twitch Username: <input type="text" id="username"></input><br />
+                    Twitch Chat (optional): <input type="text" id="twitchchat"></input><br />
+                    SRL Channel (optional): <input type="text" id="srlchannel"></input><br />
                     <button type="button" id="gobutton">Go!</button>
             </div>
             <div class="blurb">
                 <hr />
-                Website by Zak "Ubercow" Kristjanson. A <a href="http://speedruntools.com/">SpeedRunTools</a> Project.
+                Website by Zak "Ubercow" Kristjanson. A <a href="http://speedruntools.com/">SpeedRunTools</a> Project. <a href="/">Pick a new stream.</a>
             </div>
         </section>
 
@@ -48,18 +50,18 @@
             <div class="top">
                 <ul id="chatpicker">
                     <li>
-                        <a class="tab selected" target="twitchchat">Twitch</a>
+                        <a class="tab selected" target="twitchchat" id="twitchbutton">Twitch</a>
                     </li>
                     <li>
-                        <a class="tab" target="ircchat">SRL IRC</a>
+                        <a class="tab" target="ircchat" id="ircbutton">SRL</a>
                     </li>
                 </ul>
             </div>
             <div class="chat" id="ircchat">
-                
+
             </div>
             <div class="chat" id="twitchchat">
-                
+
             </div>
         </div>
 

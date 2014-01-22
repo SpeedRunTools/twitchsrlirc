@@ -5,10 +5,32 @@ define(['jquery'], function ($) {
     var activeTab = 'twitchchat';
 
     $.updateEmbeds = function() {
-        var username = window.location.hash.substring(1);
+        var params = window.location.hash.substring(1).split(';');
+        var username = params[0];
+
+        var chat = params[0];
+        var irc = params[0];
+
+        for (var i = 1; i < params.length; i++) {
+            if (params[i] !== undefined && params[i].split !== undefined) {
+                var split = params[i].split(':');
+                console.log(split);
+                if (split[0] === 'chat') {
+                    chat = split[1];
+                } else if (split[0] === 'irc') {
+                    irc = split[1];
+                }
+            }
+        }
+
+        console.log('Twitch: ' + username);
+        console.log('Chat: ' + chat);
+        console.log('IRC: ' + irc);
 
         if (username !== '') {
             $('.nohash').hide();
+            $('#twitchbutton').text('Twitch: ' + chat);
+            $('#ircbutton').text('SRL: ' + irc);
 
             var twitchchat = '<iframe scrolling="no" src="http://twitch.tv/chat/embed?channel=' + username + '&popout_chat=true"></iframe>';
             var ircchat = '<iframe src="https://kiwiirc.com/client/irc.speedrunslive.com/#' + username + '"></iframe>';
@@ -33,7 +55,12 @@ define(['jquery'], function ($) {
                 .empty()
                 .append(twitch);
         } else {
+            $('#ircchat').empty();
+            $('#twitchchat').empty();
+            $('.twitchplayer').empty();
             $('.nohash').show();
+            $('#twitchbutton').text('Twitch');
+            $('#ircbutton').text('SRL');
         }
     };
 
@@ -60,10 +87,31 @@ define(['jquery'], function ($) {
     });
 
     $('#gobutton').bind('click', function() {
-        location.hash = $('#username').val();
+        var name = $('#username').val();
+        var chat = $('#twitchchat').val();
+        var irc = $('#srlchannel').val();
+
+        var hashstring = [];
+        hashstring.push(name);
+        if (chat !== '') {
+            hashstring.push('chat:' + chat);
+        }
+        if (irc !== '') {
+            hashstring.push('irc:' + irc);
+        }
+
+        console.log(hashstring);
+
+        location.hash = hashstring.join(';');
     });
 
-    $('#username').keyup(function(event){
+    $('#username').bind('blur', function() {
+        var username = $('#username').val();
+        $('#twitchchat').attr('placeholder', username);
+        $('#srlchannel').attr('placeholder', username);
+    });
+
+    $('input').keyup(function(event){
         if(event.keyCode === 13){
             $('#gobutton').click();
         }
@@ -71,6 +119,9 @@ define(['jquery'], function ($) {
 
     $(function() {
         $.updateEmbeds();
+        var username = $('#username').val();
+        $('#twitchchat').attr('placeholder', username);
+        $('#srlchannel').attr('placeholder', username);
     });
 
 });
