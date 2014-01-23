@@ -88,7 +88,7 @@ define(['jquery'], function ($) {
 
     $('#gobutton').bind('click', function() {
         var name = $('#username').val();
-        var chat = $('#twitchchat').val();
+        var chat = $('#twitchchannel').val();
         var irc = $('#srlchannel').val();
 
         var hashstring = [];
@@ -107,7 +107,7 @@ define(['jquery'], function ($) {
 
     $('#username').bind('blur', function() {
         var username = $('#username').val();
-        $('#twitchchat').attr('placeholder', username);
+        $('#twitchchannel').attr('placeholder', username);
         $('#srlchannel').attr('placeholder', username);
     });
 
@@ -120,7 +120,7 @@ define(['jquery'], function ($) {
     $(function() {
         $.updateEmbeds();
         var username = $('#username').val();
-        $('#twitchchat').attr('placeholder', username);
+        $('#twitchchannel').attr('placeholder', username);
         $('#srlchannel').attr('placeholder', username);
     });
 
